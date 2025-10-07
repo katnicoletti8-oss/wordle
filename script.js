@@ -33,6 +33,8 @@ const maxAttempts = 6;
 function checkWord(guess) {
   const guessArr = guess.split("");
   const secretArr = secretWord.split("");
+  const row = document.createElement("div");
+  row.classList.add("row");
   guessArr.forEach((letter, i) => {
     const tile = document.createElement("div");
     tile.classList.add("tile");
@@ -40,8 +42,9 @@ function checkWord(guess) {
     if (letter === secretArr[i]) tile.classList.add("correct");
     else if (secretArr.includes(letter)) tile.classList.add("present");
     else tile.classList.add("absent");
-    board.appendChild(tile);
+    row.appendChild(tile);
   });
+  board.appendChild(row);
 
   if (guess === secretWord) {
     message.textContent = "Hai indovinato!❤️";
@@ -49,7 +52,6 @@ function checkWord(guess) {
     message.textContent = "Riprova! 💬";
   }
 }
-
 // Evento click
 button.addEventListener("click", () => {
   const guess = input.value.toUpperCase();
@@ -58,6 +60,7 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 
 
 
