@@ -63,7 +63,6 @@ h2 {
   font-size: 1em;
   border-radius: 6px;
   border: 1px solid #ccc;
-  text-transform: uppercase;
 }
 
 #submit-btn {
@@ -86,4 +85,5 @@ h2 {
   margin-top: 20px;
   font-size: 1.2em;
 }
+
 
