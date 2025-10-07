@@ -15,7 +15,7 @@ const words= ["PUZZI"];
 //document.getElementById("day-number").textContent = day;
 
 // Parola segreta del giorno
-const secretWord = words[1];
+const secretWord = (words[0]||words[1]).toUpperCase;
 
 // Elementi HTML
 const board = document.getElementById("game-board");
@@ -23,7 +23,13 @@ const input = document.getElementById("guess-input");
 const button = document.getElementById("submit-btn");
 const message = document.getElementById("message");
 
+// debugger
+console.log("Secret word (per test):", secretWord);
+
 // Logica del gioco
+let attempts = 0;
+const maxAttempts = 6;
+
 function checkWord(guess) {
   const guessArr = guess.split("");
   const secretArr = secretWord.split("");
@@ -52,4 +58,5 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 
