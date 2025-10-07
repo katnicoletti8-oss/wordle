@@ -1,21 +1,5 @@
-// Parole personalizzate per i 24 giorni
-//const words = [
-  //"KATIA", "PUZZI", "AMORE", "BACIO", "CUORE", "FIORE", "SMILE", "DOLCE",
-  //"FILMM", "PIANO", "POLII", "ZARAA", "MUSIC", "POPCO", "CAFFE", "SORRI",
-  //"NOTTI", "RICHI", "SOGNI", "MUSLI", "CALDO", "MILAN", "FUTUR", "NATAL"
-//];
-
-const words= ["PUZZI"];
-
-// Calcola il giorno automatico (1 → 24 dicembre)
-// const today = new Date();
-//const start = new Date(today.getFullYear(), 11, 1); // 1 dicembre
-//let day = today.getDate() - start.getDate() + 1;
-//if (day < 1 || day > 24) day = 1; // per testarlo fuori dicembre
-//document.getElementById("day-number").textContent = day;
-
-// Parola segreta del giorno
-const secretWord = (words[0]||words[1]).toUpperCase();
+// Puoi cambiare questa parola!
+const secretWord = "PUZZI";
 
 // Elementi HTML
 const board = document.getElementById("game-board");
@@ -23,18 +7,27 @@ const input = document.getElementById("guess-input");
 const button = document.getElementById("submit-btn");
 const message = document.getElementById("message");
 
-// debugger
-console.log("Secret word (per test):", secretWord);
+let gameOver = false;
 
-// Logica del gioco
-let attempts = 0;
-const maxAttempts = 6;
+button.addEventListener("click", () => {
+  if (gameOver) return;
+  const guess = input.value.toUpperCase();
+  if (guess.length === secretWord.length) {
+    checkWord(guess);
+    input.value = "";
+  } else {
+    message.textContent = "Inserisci una parola di 5 lettere!";
+  }
+});
 
 function checkWord(guess) {
   const guessArr = guess.split("");
   const secretArr = secretWord.split("");
+
+  // Crea una nuova riga
   const row = document.createElement("div");
   row.classList.add("row");
+
   guessArr.forEach((letter, i) => {
     const tile = document.createElement("div");
     tile.classList.add("tile");
@@ -43,16 +36,17 @@ function checkWord(guess) {
     else if (secretArr.includes(letter)) tile.classList.add("present");
     else tile.classList.add("absent");
     row.appendChild(tile);
-    board.appendChild(row); 
   });
+
+  board.appendChild(row);
 
   if (guess === secretWord) {
     message.textContent = "Hai indovinato!❤️";
+    gameOver = true;
   } else {
     message.textContent = "Riprova! 💬";
   }
 }
-// Evento click
 button.addEventListener("click", () => {
   const guess = input.value.toUpperCase();
   if (guess.length === secretWord.length) {
@@ -60,6 +54,7 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 
 
 
