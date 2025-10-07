@@ -43,8 +43,8 @@ function checkWord(guess) {
     else if (secretArr.includes(letter)) tile.classList.add("present");
     else tile.classList.add("absent");
     row.appendChild(tile);
+    board.appendChild(row); 
   });
-  board.appendChild(row);
 
   if (guess === secretWord) {
     message.textContent = "Hai indovinato!❤️";
@@ -60,6 +60,7 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 
 
 
