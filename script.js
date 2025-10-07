@@ -15,7 +15,7 @@ const words= ["PUZZI"];
 //document.getElementById("day-number").textContent = day;
 
 // Parola segreta del giorno
-const secretWord = (words[0]||words[1]).toUpperCase;
+const secretWord = (words[0]||words[1]).toUpperCase();
 
 // Elementi HTML
 const board = document.getElementById("game-board");
@@ -58,5 +58,6 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 
 
