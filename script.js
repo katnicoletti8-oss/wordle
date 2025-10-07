@@ -8,14 +8,14 @@
 const words= ["PUZZI"];
 
 // Calcola il giorno automatico (1 → 24 dicembre)
-const today = new Date();
-const start = new Date(today.getFullYear(), 11, 1); // 1 dicembre
-let day = today.getDate() - start.getDate() + 1;
-if (day < 1 || day > 24) day = 1; // per testarlo fuori dicembre
-document.getElementById("day-number").textContent = day;
+// const today = new Date();
+//const start = new Date(today.getFullYear(), 11, 1); // 1 dicembre
+//let day = today.getDate() - start.getDate() + 1;
+//if (day < 1 || day > 24) day = 1; // per testarlo fuori dicembre
+//document.getElementById("day-number").textContent = day;
 
 // Parola segreta del giorno
-const secretWord = words;
+const secretWord = words[1];
 
 // Elementi HTML
 const board = document.getElementById("game-board");
@@ -38,7 +38,7 @@ function checkWord(guess) {
   });
 
   if (guess === secretWord) {
-    message.textContent = "Hai indovinato!💖";
+    message.textContent = "Hai indovinato!❤️";
   } else {
     message.textContent = "Riprova! 💬";
   }
@@ -52,3 +52,4 @@ button.addEventListener("click", () => {
     input.value = "";
   }
 });
+
