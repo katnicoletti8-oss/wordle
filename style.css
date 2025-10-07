@@ -15,19 +15,20 @@ h2 {
   color: #444;
 }
 
+
 #game-board {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
 }
+
 .row {
   display: grid;
   grid-template-columns: repeat(5, 60px);
   grid-gap: 8px;
   margin-bottom: 5px;
 }
-
 .tile {
   width: 60px;
   height: 60px;
@@ -90,5 +91,6 @@ h2 {
   margin-top: 20px;
   font-size: 1.2em;
 }
+
 
 
